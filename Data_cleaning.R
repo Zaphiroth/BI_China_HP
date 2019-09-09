@@ -39,7 +39,9 @@ CalculateColumns <- function(content, measure, col.header) {
     if (length(position) == 1 && position >= 1) {
       content[i] <- content[position]
       for (j in 1:11) {
-        if (substr(colnames(content)[position - j], 14, 17) == substr(colnames(content)[position], 14, 17)) {
+        start.name <- colnames(content)[position]
+        end.name <- colnames(content)[position - j]
+        if (substr(end.name, nchar(end.name)-7, nchar(end.name)-3) == substr(start.name, nchar(start.name)-7, nchar(end.name)-3)) {
           content[i] <- content[i] + content[position - j]
         } else {
           break()
